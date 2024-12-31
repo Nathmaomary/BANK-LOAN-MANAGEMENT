@@ -174,4 +174,16 @@ int main() {
 
     return 0;
 }
+void searchLoanByName(string name) {
+    bool found = false;
+    for (const auto& loan : loans) {
+        if (loan.borrowerName == name) {
+            loan.displayLoanDetails();
+            found = true;
+        }
+    }
+    if (!found) {
+        cout << "No loans found for this borrower.\n";
+    }
+}
 
