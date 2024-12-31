@@ -186,4 +186,11 @@ void searchLoanByName(string name) {
         cout << "No loans found for this borrower.\n";
     }
 }
+if (loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) {
+    cout << "Invalid input! Loan details must be positive numbers.\n";
+} else {
+    Loan newLoan(id, name, amount, rate, term);
+    manager.addLoan(newLoan);
+}
+
 
