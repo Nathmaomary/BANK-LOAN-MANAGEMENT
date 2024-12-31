@@ -122,3 +122,56 @@ public:
         file.close();
     }
 };
+void showMenu() {
+    cout << "Welcome to Bank Loan Management System\n";
+    cout << "1. Add New Loan\n";
+    cout << "2. View All Loans\n";
+    cout << "3. Save Loans\n";
+    cout << "4. Load Loans\n";
+    cout << "5. Exit\n";
+}
+
+int main() {
+    LoanManager manager;
+    manager.loadLoansFromFile();  // Load existing loans at the start
+
+    while (true) {
+        showMenu();
+        int choice;
+        cin >> choice;
+
+        if (choice == 1) {
+            string id, name;
+            double amount, rate;
+            int term;
+            cout << "Enter Loan ID: ";
+            cin >> id;
+            cout << "Enter Borrower Name: ";
+            cin >> name;
+            cout << "Enter Loan Amount: ";
+            cin >> amount;
+            cout << "Enter Interest Rate: ";
+            cin >> rate;
+            cout << "Enter Loan Term (years): ";
+            cin >> term;
+
+            Loan newLoan(id, name, amount, rate, term);
+            manager.addLoan(newLoan);
+        } else if (choice == 2) {
+            manager.displayAllLoans();
+        } else if (choice == 3) {
+            manager.saveLoansToFile();
+            cout << "Loans saved successfully.\n";
+        } else if (choice == 4) {
+            manager.loadLoansFromFile();
+            cout << "Loans loaded successfully.\n";
+        } else if (choice == 5) {
+            break;
+        } else {
+            cout << "Invalid choice. Please try again.\n";
+        }
+    }
+
+    return 0;
+}
+
