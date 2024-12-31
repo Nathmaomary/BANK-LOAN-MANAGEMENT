@@ -192,5 +192,11 @@ if (loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0) {
     Loan newLoan(id, name, amount, rate, term);
     manager.addLoan(newLoan);
 }
+ifstream file("loans.txt");
+if (!file.is_open()) {
+    cout << "Error opening file.\n";
+} else {
+    // Continue reading loans from the file
+}
 
 
